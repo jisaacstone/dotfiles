@@ -38,3 +38,4 @@ PS1=" \[\e[32m\]\h:\w \[\e[33m\]\$(parse_git_branch)
 trap 'echo -ne "\e]0;$BASH_COMMAND\007"' DEBUG
 
 source ~/solarized/terminal-emulators/sol.dark
+source ~/.bash_colors
