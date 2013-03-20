@@ -1,0 +1,3 @@
+.separator "\033[0;37m|\033[0m"
+.prompt "sqlite> " "...     "
+.nullvalue "\033[35mNULL\033[0m"

@@ -13,6 +13,8 @@ set expandtab
 set softtabstop=4
 set pastetoggle=<F2>
 set title
+set hls
+hi Search cterm=NONE ctermfg=red ctermbg=0
 " Reselect visual block after indent/outdent 
 vnoremap < <gv
 vnoremap > >gv
@@ -36,3 +38,7 @@ endif
 if has("statusline")
      set statusline=%<%f\ %h%m%r%=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}%k\ %-14.(%l,%c%V%)\ %P
  endif
+
+" Browsable (upack as zip)
+au BufReadCmd *.docx,*.xlsx,*.pptx call zip#Browse(expand("<amatch>"))
+au BufReadCmd *.odt,*.ott,*.ods,*.ots,*.odp,*.otp,*.odg,*.otg call zip#Browse(expand("<amatch>"))
