@@ -205,5 +205,5 @@ fi
 
 # Source local definitions
 if [ -f $HOME/.bash_profile ]; then
-	$HOME/.bash_profile
+	source $HOME/.bash_profile
 fi

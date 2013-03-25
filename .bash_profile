@@ -1,10 +1,3 @@
-# .bashrc
-
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
-fi
-
 # User specific aliases and functions
 alias ll="ls -lA --color=always"
 alias ls="ls --color=always"
@@ -18,11 +11,9 @@ alias grep="grep --color"
 alias ack="ack-grep"
 alias please="sudo"
 
-export PYTHONPATH=/pluto:/pluto/pycloud
-export EDITOR=vi
-export WORKON_HOME=/.virtualenvs
-export PROJECT_HOME=$HOME/dev
-source /usr/bin/virtualenvwrapper.sh
+export EDITOR=vim
+
+# bind up and down arrows to history search
 bind '"\e[A"':history-search-backward
 bind '"\e[B"':history-search-forward
 
@@ -36,10 +27,17 @@ PS1=" \[\e[32m\]\h:\w \[\e[33m\]\$(parse_git_branch)
 
 trap 'echo -ne "\e]0;$BASH_COMMAND\007"' DEBUG
 
-source $HOME/solarized/terminal-emulators/sol.dark
-source $HOME/.bash_colors
-
 # Source local definitions
+if [ -f /usr/bin/virtualenvwrapper.sh ]; then
+    export WORKON_HOME=$HOME/.virtualenvs
+    source /usr/bin/virtualenvwrapper.sh
+fi
+if [ -f $HOME/.bash_colors ]; then
+	source $HOME/.bash_colors
+fi
+if [ -f $HOME/solarized/terminal-emulators/sol.dark ]; then
+	source $HOME/solarized/terminal-emulators/sol.dark
+fi
 if [ -f $HOME/.bash_local ]; then
-	$HOME/.bash_local
+	source $HOME/.bash_local
 fi
