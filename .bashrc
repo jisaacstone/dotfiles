@@ -207,3 +207,7 @@ fi
 if [ -f $HOME/.bash_profile ]; then
 	source $HOME/.bash_profile
 fi
+export LD_LIBRARY_PATH=/usr/lib/oracle/11.2/client64/lib
+export JAVA_HOME="/usr/lib/jvm/java-1.7.0-openjdk-amd64/"
+alias tomdeploy="cp */target/ROOT.war ~/ride-5.0.0-linux64/apache-tomcat-7.0.47/webapps/ && rm -r ~/ride-5.0.0-linux64/apache-tomcat-7.0.47/webapps/ROOT && ~/ride-5.0.0-linux64/apache-tomcat-7.0.47/bin/startup.sh && tail -f ~/ride-5.0.0-linux64/apache-tomcat-7.0.47/logs/catalina.out | grcat log"
+export tomtail="tail -f ~/ride-5.0.0-linux64/apache-tomcat-7.0.47/logs/catalina.out | grcat log"

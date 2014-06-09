@@ -15,7 +15,7 @@ set pastetoggle=<F2>
 set title
 set hls
 " Clicky mouse things
-set mouse=a
+" set mouse=a
 hi Search cterm=NONE ctermfg=red ctermbg=0
 " Reselect visual block after indent/outdent 
 vnoremap < <gv
