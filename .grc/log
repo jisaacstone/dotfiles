@@ -1,0 +1,55 @@
+regexp=(?<=:)\s[\w_.-]+(?=$|,)
+colours=dark yellow
+count=more
+-
+regexp=(?<==)\s?[^\s]+
+colours=yellow
+count=more
+-
+regexp=/[\w/._-]+\.\w{3,9}\b
+colours=cyan
+count=more
+-
+regexp=\d+\.?\d*\s?[shmMkKgG][bs]?\b
+colours=bold magenta
+count=more
+-
+regexp=\w+\.java:\d+
+colours=dark cyan
+count=once
+-
+regexp=\bSUCCESS\b
+colours=bold black on_green
+count=once
+-
+regexp=\b(FAIL|FAILURE|SEVERE|CRITICAL)\b
+colours=bold black on_red
+count=once
+-
+regexp=\bERROR\b
+colours=red
+count=once
+-
+regexp=\bWARN(ING)?\b
+colours=dark red
+count=once
+-
+regexp=\bDEBUG\b
+colours=dark white
+count=once
+-
+regexp=(\[|\]|\.{4,}|-{3,})
+colours=dark white
+count=more
+-
+regexp=[a-z]{3,5}://[\w/._-]+\b
+colours=underline dark magenta
+count=more
+-
+regexp=at com\.ebay\.app\.raptor\.[\w.]+
+colours=bold white
+count=once
+-
+regexp=\b[A-Z]\w+(Exception|Error)\b
+colours=magenta
+count=once
