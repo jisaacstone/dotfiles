@@ -25,7 +25,7 @@ function gt_branch {
   echo ${ref#refs/heads/}
 }
 function gt_project {
-  prj=$(git remote -v | grep origin | head -1 2> /dev/null) || return
+  prj=$(git remote -v 2>/dev/null | grep origin | head -1 2> /dev/null) || return
   pj=$(echo ${prj##*/} | cut -d. -f1)
   echo ${pj}
 }
@@ -56,6 +56,24 @@ if [ -f $HOME/.bash_local ]; then
 	source $HOME/.bash_local
 fi
 export ORACLE_HOME=/usr/lib/oracle/11.2/client64/
-alias tomdeploy="cp */target/ROOT.war ~/ride-5.0.0-linux64/apache-tomcat-7.0.47/webapps/ && rm -r ~/ride-5.0.0-linux64/apache-tomcat-7.0.47/webapps/ROOT && ~/ride-5.0.0-linux64/apache-tomcat-7.0.47/bin/startup.sh && tail -f ~/ride-5.0.0-linux64/apache-tomcat-7.0.47/logs/catalina.out | grcat log"
-alias tomtail="tail -f ~/ride-5.0.0-linux64/apache-tomcat-7.0.47/logs/catalina.out | grcat log"
-alias tomstop=~/ride-5.0.0-linux64/apache-tomcat-7.0.47/bin/shutdown.sh 
+export TOMCAT_HOME=~/ride-5.0.0-linux64/apache-tomcat-7.0.47/
+function tomstop {
+  ${TOMCAT_HOME}bin/shutdown.sh
+}
+function tomtail {
+  tail -f ${TOMCAT_HOME}logs/catalina.out | grcat log
+}
+function tomdeploy {
+  [[ -f 'target/ROOT.war' ]] && war='target/ROOT.war' || war='*/target/ROOT.war'
+  if [ -f $war ]
+    then
+      echo $war
+      tomstop
+      rm -r ${TOMCAT_HOME}webapps/*
+      cp $war ${TOMCAT_HOME}webapps/
+      ${TOMCAT_HOME}bin/startup.sh
+      tomtail
+    else
+      echo 'no ROOT.war'
+  fi
+}
