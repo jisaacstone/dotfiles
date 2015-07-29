@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/isaac/codebase/pycloud/zillion/magic'
-let g:netrw_dirhist_2='/home/isaac/dev/feeder/tests/filters/fixtures'
-let g:netrw_dirhist_3='/home/isaac/dev/feeder/tests/clients/bestbuy'
-let g:netrw_dirhist_4='/home/isaac/dev/milocrawl/WexSites/wexsites/responses/responses.wex_get_products_xml_zip.sh'
-let g:netrw_dirhist_5='/home/isaac/dev/milocrawl/WexSites/wexsites/responses/.wex_get_products_xml_zip.sh'

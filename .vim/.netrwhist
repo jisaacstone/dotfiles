@@ -1,4 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/home/isaac/raptor_workspace/InventoryService-Ingest/invsvcin/src/main/webapp/META-INF/configuration/Pre-Production/config/config'
-let g:netrw_dirhist_2='/home/isaac/riaktest/invsvc'
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/home/isaac/raptor_workspace/invapi/invapiServiceErrorContent/src/main/resources'
+let g:netrw_dirhist_2='/home/isaac/raptor_workspace/invapi/invapiServiceErrorContent/src/main/resources/v4contentsource'
+let g:netrw_dirhist_3='/home/isaac/raptor_workspace/invapi/invapiServiceErrorContent/src/main/resources/v4contentsource/source'
+let g:netrw_dirhist_4='/home/isaac/raptor_workspace/invapi/invapiServiceErrorContent/src/main/resources/v4contentsource/source/en'
+let g:netrw_dirhist_5='/home/isaac/raptor_workspace/invapi/invapiServiceErrorContent/src/main/resources/v4contentsource/source/en/invapiServiceErrorContent'
+let g:netrw_dirhist_6='/home/isaac/raptor_workspace/invapi/invapiServiceErrorContent/src/main/resources/v4contentsource/source/en/invapiServiceErrorContent/invapiServiceErrorContent'
+let g:netrw_dirhist_7='/home/isaac/raptor_workspace/InventoryService-Tests/v2tests'
+let g:netrw_dirhist_8='/home/isaac/.vim/bundle/syntastic/syntax_checkers/elixir'
