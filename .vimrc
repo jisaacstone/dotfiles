@@ -6,17 +6,10 @@ set background=dark
 let g:solarized_termtrans=1
 colorscheme solarized
 set autoindent
-set tabstop=4
-set shiftwidth=4
-set smarttab
-set expandtab
-set softtabstop=4
 set pastetoggle=<F2>
 set title
 set hls
 let g:xml_syntax_folding=1
-au FileType xml setlocal foldmethod=syntax
-set foldlevel=3
 hi Search cterm=NONE ctermfg=red ctermbg=0
 " Reselect visual block after indent/outdent 
 vnoremap < <gv
