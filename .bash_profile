@@ -1,8 +1,6 @@
 # User specific aliases and functions
-set -o vi
+# set -o vi
 
-alias ll="ls -lA --color=always"
-alias ls="ls --color=always"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -10,7 +8,6 @@ alias .....="cd ../../../.."
 alias l.="ls -d .*"
 alias lld="ls -lUd */"
 alias grep="grep --color"
-alias ack="ack-grep"
 alias please="sudo"
 alias rapdir="*/src/main/java/com/ebay/app/raptor"
 
@@ -39,7 +36,7 @@ function location {
 PS1=" \[\e[32m\]\h:\$(location) \[\e[33m\](\$(gt_project):\$(gt_branch))
 \[\e[0;37m\]\$\[\e[m\] "
 
-trap 'echo -ne "\e]0;$BASH_COMMAND\007"' DEBUG
+# trap 'echo -ne "\e]0;$BASH_COMMAND\007"' DEBUG
 
 # Source local definitions
 if [ -f /usr/bin/virtualenvwrapper.sh ]; then
@@ -77,3 +74,5 @@ function tomdeploy {
       echo 'no ROOT.war'
   fi
 }
+export TOMCAT_HOME=/usr/local/Cellar/tomcat/8.0.15/libexec/
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home

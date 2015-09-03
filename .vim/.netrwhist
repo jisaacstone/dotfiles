@@ -1,7 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/isaac/projects/cal_umbrella/apps/cal_search'
-let g:netrw_dirhist_2='/home/isaac/projects/cal_umbrella/apps/cal_search/lib'
-let g:netrw_dirhist_3='/home/isaac/projects/elixir/lib/elixir/test/elixir'
-let g:netrw_dirhist_4='/home/isaac/projects/elixir/lib/elixir/test/elixir/kernel'
-let g:netrw_dirhist_5='/home/isaac/.vim/ftplugin'
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/jistone/fun/elixir/lib/elixir/src'
+let g:netrw_dirhist_2='/Users/jistone/fun/argument_parser/deps'
+let g:netrw_dirhist_3='/Users/jistone/fun/argument_parser'
+let g:netrw_dirhist_4='/Users/jistone/fun'
+let g:netrw_dirhist_5='/Users/jistone'
+let g:netrw_dirhist_6='/Users/jistone/fun/docopt/src'

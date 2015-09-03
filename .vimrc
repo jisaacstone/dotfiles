@@ -2,14 +2,27 @@ call pathogen#infect()
 syntax on
 filetype plugin on
 filetype plugin indent on
+let g:syntastic_javascript_jslint_args = "browser: true, unparam: false, todo: false"
+let g:syntastic_enable_elixir_checker = 1
+let g:syntastic_elixir_checkers = ['elixir']
 set background=dark
-let g:solarized_termtrans=1
+" solarized options 
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
 colorscheme solarized
+
 set autoindent
 set pastetoggle=<F2>
 set title
 set hls
 let g:xml_syntax_folding=1
+" erlang
+au BufRead,BufNewFile escalus.config set filetype=erlang
+au BufRead,BufNewFile rebar.config set filetype=erlang
+au BufRead,BufNewFile rebar.*.config set filetype=erlang
+au BufRead,BufNewFile *.xrl set filetype=erlang
+au BufRead,BufNewFile *.yrl set filetype=erlang
+
 hi Search cterm=NONE ctermfg=red ctermbg=0
 " Reselect visual block after indent/outdent 
 vnoremap < <gv
