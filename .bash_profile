@@ -27,7 +27,7 @@ function gt_project {
   echo ${pj}
 }
 function compareurl {
-    echo "https://github.scm.corp.ebay.com/jistone/$(gt_project)/compare/LOKI:master...$(gt_branch)"
+    echo "https://github.corp.ebay.com/jistone/$(gt_project)/compare/LOKI:master...$(gt_branch)"
 }
 function location {
     echo $(echo $PWD | sed "s/\(.\)[^\/]*\//\1\//g")
