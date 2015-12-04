@@ -1,5 +1,5 @@
 # User specific aliases and functions
-# set -o vi
+set -o vi
 
 alias ..="cd .."
 alias ...="cd ../.."
@@ -35,8 +35,6 @@ function location {
 
 PS1=" \[\e[32m\]\h:\$(location) \[\e[33m\](\$(gt_project):\$(gt_branch))
 \[\e[0;37m\]\$\[\e[m\] "
-
-# trap 'echo -ne "\e]0;$BASH_COMMAND\007"' DEBUG
 
 # Source local definitions
 if [ -f /usr/bin/virtualenvwrapper.sh ]; then

@@ -2,9 +2,10 @@ call pathogen#infect()
 syntax on
 filetype plugin on
 filetype plugin indent on
-let g:syntastic_javascript_jslint_args = "browser: true, unparam: false, todo: false"
-let g:syntastic_enable_elixir_checker = 1
-let g:syntastic_elixir_checkers = ['elixir']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 set background=dark
 " solarized options 
 let g:solarized_visibility = "high"
@@ -43,9 +44,10 @@ imap <Tab> <C-P>
 if exists('+colorcolumn')
   set colorcolumn=80
 endif
-" display encoding in status line
 if has("statusline")
-     set statusline=%<%f\ %h%m%r%=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}%k\ %-14.(%l,%c%V%)\ %P
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
 endif
 
 " Browsable (upack as zip)
