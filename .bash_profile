@@ -1,76 +1,52 @@
-# User specific aliases and functions
 set -o vi
 
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias l.="ls -d .*"
-alias lld="ls -lUd */"
 alias grep="grep --color"
-alias please="sudo"
-alias rapdir="*/src/main/java/com/ebay/app/raptor"
 
 export EDITOR=vim
 
-# bind up and down arrows to history search
 bind '"\e[A"':history-search-backward
 bind '"\e[B"':history-search-forward
 
+complete -C /Users/isaas/homebrew/bin/aws_completer aws
+
+function unset_aws {
+  unset $(env | grep AWS | grep -v URI | cut -d'=' -f1)
+}
 function gt_branch {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
   echo ${ref#refs/heads/}
 }
 function gt_project {
   prj=$(git remote -v 2>/dev/null | grep origin | head -1 2> /dev/null) || return
-  pj=$(echo ${prj##*/} | cut -d. -f1)
+  pj=$(echo ${prj##*/} | cut -d. -f1)  
   echo ${pj}
 }
-function compareurl {
-    echo "https://github.corp.ebay.com/jistone/$(gt_project)/compare/LOKI:master...$(gt_branch)"
-}
-function location {
-    echo $(echo $PWD | sed "s/\(.\)[^\/]*\//\1\//g")
-}
 
-PS1=" \[\e[32m\]\h:\$(location) \[\e[33m\](\$(gt_project):\$(gt_branch))
-\[\e[0;37m\]\$\[\e[m\] "
+function __prompt_command {
+    local Ext="$?"             # This needs to be first
+    PS1=""
 
-# Source local definitions
-if [ -f /usr/bin/virtualenvwrapper.sh ]; then
-    export WORKON_HOME=$HOME/.virtualenvs
-    source /usr/bin/virtualenvwrapper.sh
-fi
-if [ -f $HOME/.bash_colors ]; then
-	source $HOME/.bash_colors
-fi
-if [ -f $HOME/solarized/terminal-emulators/sol.dark ]; then
-	source $HOME/solarized/terminal-emulators/sol.dark
-fi
-if [ -f $HOME/.bash_local ]; then
-	source $HOME/.bash_local
-fi
-export ORACLE_HOME=/usr/lib/oracle/11.2/client64/
-export TOMCAT_HOME=~/ride-5.0.0-linux64/apache-tomcat-7.0.47/
-function tomstop {
-  ${TOMCAT_HOME}bin/shutdown.sh
-}
-function tomtail {
-  tail -f ${TOMCAT_HOME}logs/catalina.out | grcat log
-}
-function tomdeploy {
-  [[ -f 'target/ROOT.war' ]] && war='target/ROOT.war' || war='*/target/ROOT.war'
-  if [ -f $war ]
+    local RCol='\[\e[0m\]'
+
+    local Red='\[\e[0;31m\]'
+    local Gre='\[\e[0;32m\]'
+    local Yel='\[\e[0;33m\]'
+    local Wht='\[\e[0;37m\]'
+    local Pth=$(echo $PWD | sed "s/\(.\)[^\/]*\//\1\//g")
+    PS1+=" ${Gre}\h${Pth} ${Yel}($(gt_project):$(gt_branch))
+"
+    if [ $Ext != 0 ]
     then
-      echo $war
-      tomstop
-      rm -r ${TOMCAT_HOME}webapps/*
-      cp $war ${TOMCAT_HOME}webapps/
-      ${TOMCAT_HOME}bin/startup.sh
-      tomtail
+        PS1+="${Red}\$${RCol} "
     else
-      echo 'no ROOT.war'
-  fi
+        PS1+="${Wht}\$${RCol} "
+    fi
 }
-export TOMCAT_HOME=/usr/local/Cellar/tomcat/8.0.15/libexec/
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home
+
+PROMPT_COMMAND=__prompt_command
+
+export PATH=$(pyenv root)/shims:$(pyenv root)/versions/$(pyenv version-name)/bin:$PATH
